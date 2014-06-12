@@ -1,0 +1,78 @@
+x-daterange .badmonth {
+    visibility: hidden;
+}
+
+x-daterange div.grains {
+    float: right;
+}
+x-daterange{
+    position: relative;
+    padding: 3px;
+    width: 645px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding-right: 5px;
+}
+x-daterange button.grain {
+    display: block;
+    width: 100px;
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+x-daterange button.grain:hover{
+    background: #A1D5EE;
+}
+
+x-daterange button.grain.selected{
+    background: #0095dd;
+    color: #ffffff;
+    font-weight: bold;
+}
+x-daterange x-calendar {
+    border: 0;
+    float: left;
+}
+
+x-daterange x-calendar .day ,x-daterange x-calendar .weekday-label{
+    display: inline-block;
+    font-size: 9px;
+    width: 20px;
+}
+x-daterange x-calendar .month{
+   width:171px;
+}
+
+x-daterange x-calendar .prev {
+    left: -6px;
+    font-size: 20px;
+    font-weight: bold;
+}
+x-daterange x-calendar .next {
+    right: -6px;
+    font-size: 20px;
+    font-weight: bold;
+}
+x-daterange x-calendar .prev, x-daterange x-calendar .next {
+    position: absolute;
+    top: -8px;
+    max-width: 3em;
+}
+x-daterange div.status{
+    float: right;
+    width: 121px;
+}
+x-daterange span.commonDate {
+    display: inline-block;
+    text-align: center;
+    background: #dddddd;
+    color: #000000;
+}
+
+x-daterange span.startDateSpan {
+    background-color: darkblue !important;
+}
+x-daterange span.endDateSpan {
+    background-color: darkblue !important;
+}
+
