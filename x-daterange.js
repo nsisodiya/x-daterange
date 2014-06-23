@@ -100,9 +100,11 @@
       'datetoggleoff': function(event) {
         this._range.start = event.detail.date;
         this._range.end = event.detail.date;
+        this._range.grainValue = MODE_ENUM.CUSTOM;
 
-        this._updateCurrentSelection();
         this._mode = MODE_ENUM.SelectLastDate;
+        this._updateCurrentSelection();
+
         this.getElementsByTagName("x-calendar")[0].chosen = [
           [this._range.start, this._range.end]
         ];
@@ -111,16 +113,32 @@
     accessors: {
       'value': {
         get: function() {
+          var end;
+          if (this._range.end !== undefined) {
+            end = new Date(this._range.end.getTime());
+            end.setHours(23, 59, 59, 999);
+          }
           return {
             grainValue: this._range.grainValue,
             start: this._range.start,
-            end: this._range.end
+            end: end
           };
         },
         set: function(value) {
+          if (value.start !== undefined) {
+            var start = new Date(value.start.getTime());
+            start.setHours(0, 0, 0, 0);
+            this._range.start = start;
+          }
+          if (value.end !== undefined) {
+            var end = new Date(value.end.getTime());
+            end.setHours(0, 0, 0, 0);
+            this._range.end = end;
+          }
+
           this._range.grainValue = value.grainValue;
-          this._range.start = value.start;
-          this._range.end = value.end;
+
+
           this.selectRange(this._range.grainValue, this._range.start, this._range.end);
           if (this._range.grainValue === MODE_ENUM.CUSTOM) {
             this.getElementsByTagName("x-calendar")[0].chosen = [
